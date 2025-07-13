@@ -1,12 +1,16 @@
 from datetime import datetime
+from sqlalchemy import Column, Integer, Boolean, Float, String, DateTime, ForeignKey
+from app.models import Base
 
-class RequestLog:
-    def __init__(self, server_id: int, success: bool, response_time: float, status_code: str, timestamp=None):
-        self.server_id = server_id
-        self.success = success
-        self.response_time = response_time
-        self.status_code = status_code
-        self.timestamp = timestamp or datetime.utcnow()
+class RequestLog(Base):
+    __tablename__ = "request_logs"
+
+    id = Column(Integer, primary_key=True)
+    server_id = Column(Integer, ForeignKey("servers.id"), nullable=False)
+    success = Column(Boolean, nullable=False)
+    response_time = Column(Float, nullable=False)
+    status_code = Column(String(10), nullable=False)
+    timestamp = Column(DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return (

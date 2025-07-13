@@ -1,1 +1,1 @@
-ALERT_EMAIL = "alerts@bylith.com"
+MAX_ALLOWED_TIME = 45.0

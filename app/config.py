@@ -1,2 +1,7 @@
-MAX_ALLOWED_TIME = 45.0
-DB_URL = "mysql+pymysql://root:1234@localhost/server_monitoring"
+import os
+from dotenv import load_dotenv
+
+# Load .env file
+load_dotenv()
+
+DB_URL = os.getenv("DB_URL")

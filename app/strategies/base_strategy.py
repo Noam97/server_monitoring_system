@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 
 class MonitorStrategy(ABC):
-    MAX_ALLOWED_TIME = 45.0
     @abstractmethod
     def check(self, server):
         """

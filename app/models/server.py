@@ -1,6 +1,12 @@
 from datetime import datetime
 from app.models import Base
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, Boolean
+
+from enum import Enum
+
+class Protocol(str, Enum):
+    HTTP = "http"
+    HTTPS = "https"
 
 class Server(Base):
     __tablename__ = "servers"

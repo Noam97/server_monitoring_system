@@ -1,10 +1,9 @@
 from datetime import datetime
-from sqlalchemy import Column, Integer, Boolean, Float, String, DateTime, ForeignKey
 from app.models import Base
+from sqlalchemy import Column, Integer, Float, String, Boolean, DateTime, ForeignKey
 
 class RequestLog(Base):
     __tablename__ = "request_logs"
-
     id = Column(Integer, primary_key=True)
     server_id = Column(Integer, ForeignKey("servers.id"), nullable=False)
     success = Column(Boolean, nullable=False)

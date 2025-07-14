@@ -37,8 +37,27 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 
 pip install -r requirements.txt
 
+## 4. create a `.env` file
 
-### 4. Set up the database
+Before running the project, create a `.env` file in the root directory based on the `.env.example` provided.
+
+This file contains environment-specific variables such as database connection and email alert credentials.
+
+## Required `.env` variables:
+
+DB_URL=your_database_url
+
+SMTP_USER=servermonitortesting@gmail.com
+SMTP_PASSWORD=wwsdxiomtogvzwcm
+ALERT_EMAIL=servermonitortesting0@gmail.com
+
+> **Note:**  
+> The Gmail account and App Password listed above were created **specifically for this assignment** and are safe to use.  
+> This App Password was generated via Google’s [App Password system](https://support.google.com/accounts/answer/185833) and only allows sending emails via SMTP — it cannot be used to log in to Gmail or access any sensitive data.
+
+***If you prefer to use your own email credentials, you can enable 2-Step Verification and generate your own App Password, then replace the values above accordingly.***
+
+### 5. Set up the database
 
 ## Make sure you have a MySQL server running.
 
@@ -49,7 +68,7 @@ Create a new database and configure the connection URL inside app/config.py:
 python db/init_db.py
 
 
-### 5. Run the application
+### 6. Run the application
 uvicorn main:app --reload
 
 ### API Endpoints
@@ -81,7 +100,6 @@ You can import it directly into Postman to test all endpoints.
 The file `server_monitoring_dump.sql` includes the full database schema and example data.  
 To restore the database:
 mysql -u root -p < server_monitoring_dump.sql
-
 
 
 ### Tech Stack

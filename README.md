@@ -64,7 +64,7 @@ ALERT_EMAIL=servermonitortesting0@gmail.com
 Create a new database and configure the connection URL inside app/config.py:
   DB_URL = "mysql+pymysql://<user>:<password>@localhost/<your_db_name>"
   
-## Then run:
+# Then run:
 python db/init_db.py
 
 
@@ -109,6 +109,21 @@ mysql -u root -p < server_monitoring_dump.sql
 - MySQL
 - Uvicorn
 - Requests / httpx
+
+
+<img width="1249" height="632" alt="image" src="https://github.com/user-attachments/assets/8a9b53be-ef88-4cfe-89cb-e7a815701661" />
+
+<img width="1303" height="602" alt="image" src="https://github.com/user-attachments/assets/a46d34dc-d427-467d-a142-4b2312b23b22" />
+
+<img width="661" height="234" alt="image" src="https://github.com/user-attachments/assets/db8a2ef9-22ea-4dbc-a10d-71a6a7897fb6" />
+
+<img width="855" height="339" alt="image" src="https://github.com/user-attachments/assets/72375a20-9004-4582-977c-a5555d5647d8" />
+
+
+
+
+
+
 
 
 

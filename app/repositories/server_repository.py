@@ -90,20 +90,6 @@ def update_server_object(server: Server):
     finally:
         session.close()
 
-# def get_closest_log_before_timestamp(server_id: int, timestamp: datetime):
-#     session = SessionLocal()
-#     try:
-#         log = (
-#             session.query(RequestLog)
-#             .filter(RequestLog.server_id == server_id)
-#             .filter(RequestLog.timestamp <= timestamp)
-#             .order_by(RequestLog.timestamp.desc())
-#             .first()
-#         )
-#         return log
-#     finally:
-#         session.close()
-
 def get_logs_before_timestamp(server_id: int, timestamp: datetime, limit: int = 5):
     session = SessionLocal()
     try:

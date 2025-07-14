@@ -32,6 +32,33 @@
       }
     },
     {
+      "name": "Create Server with invalid URL",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"invalid\",\n  \"url\": \"google.example\",\n  \"protocol\": \"https\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/servers",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "servers"
+          ]
+        }
+      }
+    },
+    {
       "name": "Get All Servers",
       "request": {
         "method": "GET",

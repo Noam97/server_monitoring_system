@@ -1,20 +1,49 @@
-def send_email_alert(server):
-  # TODO: Replace with actual email sending logic using SMTP or an email service
-  #Sends an email alert when a server fails 3 times in a row
-    print("Sending email alert!")
-    print(f"Subject: Server '{server.name}' is DOWN")
-    print(f"Message: The server at {server.url} has failed 3 consecutive checks.\n"
-          f"Please investigate the issue.")
+# from email.mime.text import MIMEText
+# import smtplib
+# from app import config
 
+
+# def send_email_alert(server):
+#     subject = f"[ALERT] Server '{server.name}' is DOWN"
+#     message = (
+#         f"⚠️ Server Failure Detected ⚠️\n\n"
+#         f"The server at {server.url} using protocol '{server.protocol}'\n"
+#         f"has failed 3 consecutive health checks.\n\n"
+#         f"Please investigate the issue as soon as possible.\n"
+#     )
+
+#     print("=" * 60)
+#     print("Sending Email Alert (Simulation Only)")
+#     print(f"Subject: {subject}")
+#     print(f"Body:\n{message}")
+#     print("=" * 60)
+
+
+# def send_server_down_email(server):
+#     send_email_alert(server)
+#     msg = MIMEText(message)
+#     msg['Subject'] = subject
+#     msg['From'] = config.SMTP_USER
+#     msg['To'] = config.ALERT_EMAIL
+
+#     print("SMTP_USER:", config.SMTP_USER)
+#     print("SMTP_PASSWORD:", config.SMTP_PASSWORD)
+#     print("ALERT_EMAIL:", config.ALERT_EMAIL)
+
+#     try:
+#         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+#             smtp.login(config.SMTP_USER, config.SMTP_PASSWORD)
+#             smtp.send_message(msg)
+#         print("Email alert sent successfully.")
+#     except Exception as e:
+#         print(f"Failed to send email alert: {e}")
+
+
+from email.mime.text import MIMEText
+import smtplib
+from app import config
 
 def send_server_down_email(server):
-    """
-    Simulates sending an email alert when a server becomes unhealthy.
-    This function prints the email contents to the console.
-    In a real-world scenario, this should be replaced with actual SMTP logic.
-
-    :param server: Server object containing server name and URL
-    """
     subject = f"[ALERT] Server '{server.name}' is DOWN"
     message = (
         f"⚠️ Server Failure Detected ⚠️\n\n"
@@ -24,7 +53,24 @@ def send_server_down_email(server):
     )
 
     print("=" * 60)
-    print("Sending Email Alert (Simulation Only)")
+    print("📧 Sending Email Alert")
     print(f"Subject: {subject}")
     print(f"Body:\n{message}")
     print("=" * 60)
+
+    msg = MIMEText(message)
+    msg['Subject'] = subject
+    msg['From'] = config.SMTP_USER
+    msg['To'] = config.ALERT_EMAIL
+
+    print("SMTP_USER:", config.SMTP_USER)
+    print("SMTP_PASSWORD:", config.SMTP_PASSWORD)
+    print("ALERT_EMAIL:", config.ALERT_EMAIL)
+
+    try:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            smtp.login(config.SMTP_USER, config.SMTP_PASSWORD)
+            smtp.send_message(msg)
+        print("✅ Email alert sent successfully.")
+    except Exception as e:
+        print(f"❌ Failed to send email alert: {e}")

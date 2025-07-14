@@ -1,6 +1,6 @@
 from app.strategies.http_strategy import HttpMonitorStrategy
-# from strategies.ftp_strategy import FtpMonitorStrategy
-# from strategies.ssh_strategy import SshMonitorStrategy
+from app.strategies.ftp_strategy import FTPMonitorStrategy
+# from app.strategies.ssh_strategy import SshMonitorStrategy
 
 class MonitorStrategyFactory:
     @staticmethod
@@ -10,8 +10,8 @@ class MonitorStrategyFactory:
         if protocol in ["http", "https"]:
             return HttpMonitorStrategy()
         
-        # elif protocol == "ftp":
-        #     return FtpMonitorStrategy()
+        elif protocol == "ftp":
+            return FTPMonitorStrategy()
         # elif protocol == "ssh":
         #     return SshMonitorStrategy()
         

@@ -8,6 +8,7 @@ from enum import Enum
 class Protocol(str, Enum):
     HTTP = "http"
     HTTPS = "https"
+    FTP = "ftp"
 
 class Server(Base):
     __tablename__ = "servers"

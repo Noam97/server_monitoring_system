@@ -11,17 +11,24 @@ async def ping_server(server: Server):
 
     try:
         monitor = ServerMonitor(server)
-        success, duration, code = monitor.run_check()
+        result = monitor.run_check()
+        success = result["success"]
+        duration = result["response_time"]
+        code = result["code"]
 
         log = RequestLog(
             server_id=server.id,
             success=success,
-            response_time=duration,
+            response_time=duration if duration is not None else 0.0,
             status_code=code
         )
-    finally:
+
         session.add(log)
         session.commit()
+
+    except Exception as e:
+        print(f"[ERROR] Failed to ping {server.url}: {e}")
+        session.rollback()
+
+    finally:
         session.close()
-
-

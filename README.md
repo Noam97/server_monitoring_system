@@ -24,7 +24,7 @@ The system performs periodic health checks, maintains historical logs, and raise
 
 ### 1. Clone the repository
 
-git clone https://github.com/<your-username>/server_monitoring_system.git
+git clone https://github.com/Noam97/server_monitoring_system.git
 cd server_monitoring_system
 
 

@@ -1,5 +1,5 @@
-from strategies.strategy_factory import MonitorStrategyFactory
-from models.server import Server
+from app.strategies.strategy_factory import MonitorStrategyFactory
+from app.models.server import Server
 
 class ServerMonitor:
     def __init__(self, server: Server):

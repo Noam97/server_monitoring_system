@@ -1,6 +1,7 @@
+
+from sqlalchemy import Column, Integer, String, DateTime, Boolean
 from datetime import datetime
 from app.models import Base
-from sqlalchemy import Column, Integer, String, DateTime, Boolean
 
 from enum import Enum
 
@@ -15,6 +16,8 @@ class Server(Base):
     url = Column(String(255), nullable=False)
     protocol = Column(String(10), nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
+    is_healthy = Column(Boolean, nullable=True)
+    last_health_status_sent = Column(DateTime, nullable=True)
 
     def __repr__(self):
         return f"<Server {self.name} ({self.protocol})>"

@@ -1,4 +1,4 @@
-from strategies.http_strategy import HttpMonitorStrategy
+from app.strategies.http_strategy import HttpMonitorStrategy
 # from strategies.ftp_strategy import FtpMonitorStrategy
 # from strategies.ssh_strategy import SshMonitorStrategy
 

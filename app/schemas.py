@@ -7,6 +7,8 @@ class ServerCreate(BaseModel):
     name: str
     url: str
     protocol: Protocol
+    is_healthy: Optional[bool] = None
+
 
 class ServerOut(BaseModel):
     id: int
@@ -34,3 +36,5 @@ class ServerUpdate(BaseModel):
     name: Optional[str] = None
     url: Optional[str] = None
     protocol: Optional[Protocol] = None
+    is_healthy: Optional[bool] = None
+

@@ -2,6 +2,7 @@ from app.models.server import Server
 from app.models.request_log import RequestLog
 from app.models import SessionLocal
 from app.schemas import ServerUpdate
+from datetime import datetime
 from sqlalchemy.orm import Session
 
 def add_server(server_data):
@@ -31,8 +32,17 @@ def get_server_by_id(server_id):
     session: Session = SessionLocal()
     try:
         server = session.query(Server).filter(Server.id == server_id).first()
+        return server
+    finally:
+        session.close()
+
+def get_server_with_logs(server_id: int):
+    session: Session = SessionLocal()
+    try:
+        server = session.query(Server).filter(Server.id == server_id).first()
         if not server:
-            return None
+            return None, []
+
         logs = (
             session.query(RequestLog)
             .filter(RequestLog.server_id == server_id)
@@ -62,16 +72,63 @@ def update_server(server_id: int, updated_data):
         server = session.query(Server).filter(Server.id == server_id).first()
         if not server:
             return None
-        
-        if updated_data.name is not None:
-            server.name = updated_data.name
-        if updated_data.url is not None:
-            server.url = str(updated_data.url)
-        if updated_data.protocol is not None:
-            server.protocol = updated_data.protocol
+
+        for field, value in updated_data.dict(exclude_unset=True).items():
+            setattr(server, field, value)
 
         session.commit()
         session.refresh(server)
         return server
+    finally:
+        session.close()
+
+def update_server_object(server: Server):
+    session: Session = SessionLocal()
+    try:
+        session.merge(server)
+        session.commit()
+    finally:
+        session.close()
+
+# def get_closest_log_before_timestamp(server_id: int, timestamp: datetime):
+#     session = SessionLocal()
+#     try:
+#         log = (
+#             session.query(RequestLog)
+#             .filter(RequestLog.server_id == server_id)
+#             .filter(RequestLog.timestamp <= timestamp)
+#             .order_by(RequestLog.timestamp.desc())
+#             .first()
+#         )
+#         return log
+#     finally:
+#         session.close()
+
+def get_logs_before_timestamp(server_id: int, timestamp: datetime, limit: int = 5):
+    session = SessionLocal()
+    try:
+        logs = (
+            session.query(RequestLog)
+            .filter(RequestLog.server_id == server_id)
+            .filter(RequestLog.timestamp <= timestamp)
+            .order_by(RequestLog.timestamp.desc())
+            .limit(limit)
+            .all()
+        )
+        return logs
+    finally:
+        session.close()
+
+
+def get_request_logs_by_server_id(server_id: int):
+    session = SessionLocal()
+    try:
+        logs = (
+            session.query(RequestLog)
+            .filter(RequestLog.server_id == server_id)
+            .order_by(RequestLog.timestamp.desc())
+            .all()
+        )
+        return logs
     finally:
         session.close()

@@ -1,7 +1,7 @@
-from models.server import Server
-from models.request_log import RequestLog
-from services.server_monitor import ServerMonitor
-from services.email_service import send_email_alert
+from app.models.server import Server
+from app.models.request_log import RequestLog
+from app.services.server_monitor import ServerMonitor
+from app.services.email_service import send_email_alert
 
 # TODO: Save this log entry to the database instead of in-memory list
 request_logs = []
@@ -21,4 +21,4 @@ def monitor_all_servers(servers):
 
         if len(recent_failures) == 3:
             print(f"Server {server.name} failed 3 times! Would send email here.")
-            send_email_alert(server)
+            send_server_down_email(server)

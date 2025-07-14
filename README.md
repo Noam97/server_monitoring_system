@@ -73,9 +73,15 @@ GET /servers/was-healthy/{id}?timestamp=... – Was server healthy at given time
 
 
 ###  Postman Collection
+The Postman collection can be found in the main folder under the name postman_file.json.
+You can import it directly into Postman to test all endpoints.
 
 
 ### SQL DB Dump
+The file `server_monitoring_dump.sql` includes the full database schema and example data.  
+To restore the database:
+mysql -u root -p < server_monitoring_dump.sql
+
 
 
 ### Tech Stack

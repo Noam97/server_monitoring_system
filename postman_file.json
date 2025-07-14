@@ -1,0 +1,178 @@
+{
+  "info": {
+    "name": "Server Monitoring System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Server",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Google\",\n  \"url\": \"www.google.com\",\n  \"protocol\": \"https\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/servers",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "servers"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Servers",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/servers",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "servers"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Server by ID (with logs)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/servers/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "servers",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Server",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Updated Google\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/servers/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "servers",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Server",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8000/servers/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "servers",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Servers with Health",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/servers/health-status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "servers",
+            "with-health"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Server Request Logs",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/servers/logs/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "servers",
+            "requests",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Was Server Healthy at Timestamp",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/servers/was-healthy/1?timestamp=2024-01-01T12:00:00",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "servers",
+            "was-healthy",
+            "1"
+          ],
+          "query": [
+            {
+              "key": "timestamp",
+              "value": "2024-01-01T12:00:00"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

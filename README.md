@@ -115,9 +115,9 @@ mysql -u root -p < server_monitoring_dump.sql
 
 <img width="1303" height="602" alt="image" src="https://github.com/user-attachments/assets/a46d34dc-d427-467d-a142-4b2312b23b22" />
 
-<img width="468" height="158" alt="image" src="https://github.com/user-attachments/assets/9aa571a8-828f-45d9-a60a-b6f2ff795f87" />
+<img width="1300" height="600" alt="image" src="https://github.com/user-attachments/assets/9aa571a8-828f-45d9-a60a-b6f2ff795f87" />
 
-<img width="468" height="143" alt="image" src="https://github.com/user-attachments/assets/37731c09-bd85-441d-8ceb-f0c2d857d208" />
+<img width="1300" height="600" alt="image" src="https://github.com/user-attachments/assets/37731c09-bd85-441d-8ceb-f0c2d857d208" />
 
 
 

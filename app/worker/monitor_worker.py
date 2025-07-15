@@ -1,7 +1,7 @@
 from app.models.server import Server
 from app.models.request_log import RequestLog
 from app.services.server_monitor import ServerMonitor
-from app.services.email_service import send_email_alert
+from app.services.email_service import send_server_down_email
 
 # TODO: Save this log entry to the database instead of in-memory list
 request_logs = []

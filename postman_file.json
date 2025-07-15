@@ -32,7 +32,19 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"HTTP Server\",\n  \"url\": \"www.example.com\",\n  \"protocol\": \"http\"\n}"
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Response contains id\", function () { var jsonData = pm.response.json(); pm.expect(jsonData).to.have.property(\"id\"); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Create Server with invalid URL",
@@ -59,7 +71,19 @@
                 "servers"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200 (despite invalid URL)\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Response still contains id\", function () { var jsonData = pm.response.json(); pm.expect(jsonData).to.have.property(\"id\"); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Get Server by ID",
@@ -78,7 +102,18 @@
                 "1"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Update Server",
@@ -106,7 +141,19 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"HTTP Server Updated\"\n}"
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Response contains updated name\", function () { var jsonData = pm.response.json(); pm.expect(jsonData.name).to.include(\"Updated\"); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Delete Server",
@@ -125,7 +172,18 @@
                 "1"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Get All Servers",
@@ -143,7 +201,18 @@
                 "servers"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Get Server Request Logs",
@@ -163,7 +232,18 @@
                 "1"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Was Server Healthy at Timestamp",
@@ -189,7 +269,18 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         }
       ]
     },
@@ -221,7 +312,19 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"HTTPS Server\",\n  \"url\": \"www.example.com\",\n  \"protocol\": \"https\"\n}"
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Response contains id\", function () { var jsonData = pm.response.json(); pm.expect(jsonData).to.have.property(\"id\"); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Create Server with invalid URL",
@@ -248,7 +351,19 @@
                 "servers"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200 (despite invalid URL)\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Response still contains id\", function () { var jsonData = pm.response.json(); pm.expect(jsonData).to.have.property(\"id\"); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Get Server by ID",
@@ -267,7 +382,18 @@
                 "1"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Update Server",
@@ -295,7 +421,19 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"HTTPS Server Updated\"\n}"
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Response contains updated name\", function () { var jsonData = pm.response.json(); pm.expect(jsonData.name).to.include(\"Updated\"); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Delete Server",
@@ -314,7 +452,18 @@
                 "1"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Get All Servers",
@@ -332,7 +481,18 @@
                 "servers"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Get Server Request Logs",
@@ -352,7 +512,18 @@
                 "1"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Was Server Healthy at Timestamp",
@@ -378,7 +549,18 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         }
       ]
     },
@@ -410,7 +592,19 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"FTP Server\",\n  \"url\": \"test.rebex.net\",\n  \"protocol\": \"ftp\",\n  \"username\": \"demo\",\n  \"password\": \"password\"\n}"
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Response contains id\", function () { var jsonData = pm.response.json(); pm.expect(jsonData).to.have.property(\"id\"); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Get Server by ID",
@@ -429,7 +623,18 @@
                 "1"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Update Server",
@@ -457,7 +662,19 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"FTP Server Updated\"\n}"
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Response contains updated name\", function () { var jsonData = pm.response.json(); pm.expect(jsonData.name).to.include(\"Updated\"); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Delete Server",
@@ -476,7 +693,18 @@
                 "1"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Get All Servers",
@@ -494,7 +722,18 @@
                 "servers"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Get Server Request Logs",
@@ -514,7 +753,18 @@
                 "1"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Was Server Healthy at Timestamp",
@@ -540,7 +790,18 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Create Server with invalid URL",
@@ -567,7 +828,19 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"FTP Server\",\n  \"url\": \"invalid.ftp.address\",\n  \"protocol\": \"ftp\",\n  \"username\": \"demo\",\n  \"password\": \"password\"\n}"
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200 (despite invalid URL)\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Response still contains id\", function () { var jsonData = pm.response.json(); pm.expect(jsonData).to.have.property(\"id\"); });"
+                ]
+              }
+            }
+          ]
         }
       ]
     },
@@ -599,7 +872,19 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"SSH Server\",\n  \"url\": \"127.0.0.1\",\n  \"protocol\": \"ssh\",\n  \"username\": \"testuser\",\n  \"password\": \"your_password\",\n  \"private_key_path\": \"/Users/noam/.ssh/id_rsa\"\n}"
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Response contains id\", function () { var jsonData = pm.response.json(); pm.expect(jsonData).to.have.property(\"id\"); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Get SSH Server by ID",
@@ -617,7 +902,18 @@
                 "1"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Update SSH Server",
@@ -645,7 +941,19 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"SSH Server Updated\"\n}"
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Response contains updated name\", function () { var jsonData = pm.response.json(); pm.expect(jsonData.name).to.include(\"Updated\"); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Delete SSH Server",
@@ -663,7 +971,18 @@
                 "1"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Get All SSH Servers",
@@ -680,7 +999,18 @@
                 "servers"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Get SSH Server Request Logs",
@@ -699,7 +1029,18 @@
                 "1"
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Was SSH Server Healthy at Timestamp",
@@ -724,7 +1065,18 @@
                 }
               ]
             }
-          }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
         }
       ]
     }

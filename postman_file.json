@@ -541,6 +541,190 @@
               ]
             }
           }
+        },
+        {
+          "name": "Create Server with invalid URL",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/servers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "servers"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"FTP Server\",\n  \"url\": \"invalid.ftp.address\",\n  \"protocol\": \"ftp\",\n  \"username\": \"demo\",\n  \"password\": \"password\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "SSH Server API",
+      "item": [
+        {
+          "name": "Create SSH Server",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/servers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "servers"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"SSH Server\",\n  \"url\": \"127.0.0.1\",\n  \"protocol\": \"ssh\",\n  \"username\": \"testuser\",\n  \"password\": \"your_password\",\n  \"private_key_path\": \"/Users/noam/.ssh/id_rsa\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get SSH Server by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/servers/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "servers",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update SSH Server",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/servers/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "servers",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"SSH Server Updated\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete SSH Server",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:8000/servers/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "servers",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get All SSH Servers",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/servers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "servers"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get SSH Server Request Logs",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/servers/logs/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "servers",
+                "logs",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Was SSH Server Healthy at Timestamp",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/servers/was-healthy/1?timestamp=2025-07-30T12:00:00",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "servers",
+                "was-healthy",
+                "1"
+              ],
+              "query": [
+                {
+                  "key": "timestamp",
+                  "value": "2025-07-30T12:00:00"
+                }
+              ]
+            }
+          }
         }
       ]
     }

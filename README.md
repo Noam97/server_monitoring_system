@@ -20,6 +20,21 @@ The system performs periodic health checks, maintains historical logs, and raise
 
 ---
 
+## Datebase Design
+
+-The system uses a polymorphic database design for storing server data.
+
+-All protocols share a base table named servers, which includes:
+name, url, protocol,current health status info, last health status sent
+
+-Each protocol with additional fields stores them in a dedicated table:
+http_servers and https_servers: use only the base fields.
+ftp_servers: includes username and password.
+ssh_servers: includes username, password, and optionally private_key_path.
+
+This separation keeps the data organized and scalable for protocol-specific configuration.
+
+
 ## Getting Started
 
 ### 1. Clone the repository

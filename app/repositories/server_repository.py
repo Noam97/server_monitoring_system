@@ -6,6 +6,8 @@ from datetime import datetime
 from app.models.http_server import HTTPServer
 from app.models.https_server import HTTPSServer
 from app.models.ftp_server import FTPServer
+from app.models.ssh_server import SSHServer
+
 from sqlalchemy.orm import Session
 
 
@@ -13,7 +15,8 @@ def get_server_class(protocol: str):
     return {
         "ftp": FTPServer,
         "http": HTTPServer,
-        "https": HTTPSServer
+        "https": HTTPSServer,
+        "ssh": SSHServer
     }.get(protocol, Server)
 
 def add_server(server_data):
@@ -22,7 +25,7 @@ def add_server(server_data):
         protocol = server_data.protocol.value
         ServerClass = get_server_class(protocol)
 
-        if protocol == "ftp":
+        if protocol == "ftp" or protocol == "ssh":
             new_server = ServerClass(
                 name=server_data.name,
                 url=str(server_data.url),

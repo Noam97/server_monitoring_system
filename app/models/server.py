@@ -9,6 +9,7 @@ class Protocol(str, Enum):
     HTTP = "http"
     HTTPS = "https"
     FTP = "ftp"
+    SSH = "ssh"
 
 class Server(Base):
     __tablename__ = "servers"

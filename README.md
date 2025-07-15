@@ -64,7 +64,7 @@ ALERT_EMAIL=servermonitortesting0@gmail.com
 Create a new database and configure the connection URL inside app/config.py:
   DB_URL = "mysql+pymysql://<user>:<password>@localhost/<your_db_name>"
   
-# Then run:
+## Then run:
 python db/init_db.py
 
 

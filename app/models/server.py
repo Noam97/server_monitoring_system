@@ -20,6 +20,12 @@ class Server(Base):
     is_healthy = Column(Boolean, nullable=True)
     last_health_status_sent = Column(DateTime, nullable=True)
 
+    __mapper_args__ = {
+        "polymorphic_on": protocol,
+        "polymorphic_identity": "base",
+        "with_polymorphic": "*"
+    }
+
     def __repr__(self):
         return f"<Server {self.name} ({self.protocol})>"
     

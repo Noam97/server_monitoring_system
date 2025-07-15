@@ -3,22 +3,48 @@ from app.models.request_log import RequestLog
 from app.models import SessionLocal
 from app.schemas import ServerUpdate
 from datetime import datetime
+from app.models.http_server import HTTPServer
+from app.models.https_server import HTTPSServer
+from app.models.ftp_server import FTPServer
 from sqlalchemy.orm import Session
+
+
+def get_server_class(protocol: str):
+    return {
+        "ftp": FTPServer,
+        "http": HTTPServer,
+        "https": HTTPSServer
+    }.get(protocol, Server)
 
 def add_server(server_data):
     session: Session = SessionLocal()
     try:
-        new_server = Server(
-            name=server_data.name,
-            url=str(server_data.url),
-            protocol=server_data.protocol
-        )
+        protocol = server_data.protocol.value
+        ServerClass = get_server_class(protocol)
+
+        if protocol == "ftp":
+            new_server = ServerClass(
+                name=server_data.name,
+                url=str(server_data.url),
+                protocol=protocol,
+                username=server_data.username,
+                password=server_data.password
+            )
+        else:
+            new_server = ServerClass(
+                name=server_data.name,
+                url=str(server_data.url),
+                protocol=protocol
+            )
+
         session.add(new_server)
         session.commit()
         session.refresh(new_server)
         return new_server
     finally:
         session.close()
+
+
 
 def get_all_servers():
     session: Session = SessionLocal()

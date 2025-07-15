@@ -8,6 +8,8 @@ class ServerCreate(BaseModel):
     url: str
     protocol: Protocol
     is_healthy: Optional[bool] = None
+    username: Optional[str] = None
+    password: Optional[str] = None
 
 
 class ServerOut(BaseModel):

@@ -46,7 +46,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"invalid\",\n  \"url\": \"google.example\",\n  \"protocol\": \"https\"\n}"
+              "raw": "{\n  \"name\": \"invalid\",\n  \"url\": \"google.example\",\n  \"protocol\": \"http\"\n}"
             },
             "url": {
               "raw": "http://localhost:8000/servers",
@@ -224,6 +224,33 @@
           }
         },
         {
+          "name": "Create Server with invalid URL",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"invalid\",\n  \"url\": \"google.example\",\n  \"protocol\": \"https\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/servers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "servers"
+              ]
+            }
+          }
+        },
+        {
           "name": "Get Server by ID",
           "request": {
             "method": "GET",
@@ -381,7 +408,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"FTP Server\",\n  \"url\": \"test.rebex.net\",\n  \"protocol\": \"ftp\"\n}"
+              "raw": "{\n  \"name\": \"FTP Server\",\n  \"url\": \"test.rebex.net\",\n  \"protocol\": \"ftp\",\n  \"username\": \"demo\",\n  \"password\": \"password\"\n}"
             }
           }
         },

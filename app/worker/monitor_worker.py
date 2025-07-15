@@ -21,4 +21,4 @@ def monitor_all_servers(servers):
 
         if len(recent_failures) == 3:
             print(f"Server {server.name} failed 3 times! Would send email here.")
-            send_server_down_email(server)
+            send_email_alert(server)

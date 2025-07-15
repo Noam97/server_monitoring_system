@@ -1,6 +1,6 @@
 from app.models.server import Server
 from app.models.request_log import RequestLog
-from app.models import SessionLocal
+from db.base import SessionLocal
 from app.schemas import ServerUpdate
 from datetime import datetime
 from sqlalchemy.orm import Session

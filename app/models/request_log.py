@@ -1,5 +1,5 @@
 from datetime import datetime
-from app.models import Base
+from db.base import Base
 from sqlalchemy import Column, Integer, Float, String, Boolean, DateTime, ForeignKey
 
 class RequestLog(Base):

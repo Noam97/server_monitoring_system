@@ -8,7 +8,7 @@ class FTPMonitorStrategy(MonitorStrategy):
         try:
             ftp = FTP()
             ftp.connect(host=server.url, timeout=45)
-            ftp.login(user=server.username or "anonymous", passwd=server.password or "")
+            ftp.login(user="demo", passwd="password")
             ftp.quit()
             duration = time.time() - start_time
             return True, duration, 200

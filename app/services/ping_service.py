@@ -11,10 +11,7 @@ async def ping_server(server: Server):
 
     try:
         monitor = ServerMonitor(server)
-        result = monitor.run_check()
-        success = result["success"]
-        duration = result["response_time"]
-        code = result["code"]
+        success, duration, code = monitor.run_check()
 
         log = RequestLog(
             server_id=server.id,

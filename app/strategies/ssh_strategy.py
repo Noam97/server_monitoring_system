@@ -14,6 +14,5 @@ class SSHMonitorStrategy(MonitorStrategy):
             return True, duration, 200
         except Exception as e:
             duration = time.time() - start_time
-            print(f"[SSH ERROR] Could not connect to {server.url}: {e}")
             return False, duration, 530
 

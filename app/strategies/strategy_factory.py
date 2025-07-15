@@ -1,6 +1,6 @@
 from app.strategies.http_strategy import HttpMonitorStrategy
 from app.strategies.ftp_strategy import FTPMonitorStrategy
-# from app.strategies.ssh_strategy import SshMonitorStrategy
+from app.strategies.ssh_strategy import SSHMonitorStrategy
 
 class MonitorStrategyFactory:
     @staticmethod
@@ -12,8 +12,7 @@ class MonitorStrategyFactory:
         
         elif protocol == "ftp":
             return FTPMonitorStrategy()
-        # elif protocol == "ssh":
-        #     return SshMonitorStrategy()
-        
+        elif protocol == "ssh":
+            return SSHMonitorStrategy()
         else:
             raise ValueError(f"Unsupported protocol: {protocol}")

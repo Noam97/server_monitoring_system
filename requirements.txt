@@ -6,3 +6,4 @@ httpx
 email-validator
 python-dotenv
 pymysql
+paramiko>=3.0.0

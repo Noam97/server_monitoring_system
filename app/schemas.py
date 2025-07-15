@@ -10,7 +10,7 @@ class ServerCreate(BaseModel):
     is_healthy: Optional[bool] = None
     username: Optional[str] = None
     password: Optional[str] = None
-
+    private_key_path: Optional[str] = None
 
 class ServerOut(BaseModel):
     id: int
@@ -39,4 +39,7 @@ class ServerUpdate(BaseModel):
     url: Optional[str] = None
     protocol: Optional[Protocol] = None
     is_healthy: Optional[bool] = None
+    username: Optional[str] = None
+    password: Optional[str] = None
+    private_key_path: Optional[str] = None
 

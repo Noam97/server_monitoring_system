@@ -3,7 +3,6 @@ from app.models.server import Server
 
 class HTTPSServer(Server):
     # __tablename__ = "https_servers"
-
     # id = Column(Integer, ForeignKey("servers.id"), primary_key=True)
 
     __mapper_args__ = {
